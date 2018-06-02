@@ -23,16 +23,16 @@ def apply_coupons(cart, coupons)
      item_with_coupon = item + " W/COUPON"
      cart[item_with_coupon] = {}
 
-     cart[item].each {|key,value|
+     cart[item].each do |key,value|
        cart[item_with_coupon][key] = value
-     }
+     end
 
      cart[item_with_coupon][:price] = coupon[:cost]
      cart[item_with_coupon][:count] = cart_quantity / coupon_quantity
      cart[item][:count] = cart_quantity % coupon_quantity
-   end
- end
-cart
+    end
+  end
+ cart
 end
 
 def apply_clearance(cart)
