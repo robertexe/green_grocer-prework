@@ -16,7 +16,7 @@ end
 def apply_coupons(cart, coupons)
   # code here	+  #coupon array of hashes
   #cart is a hash
-  coupons.each { |coupon|
+  coupons.each do |coupon|
     item = coupon[:item]
     if cart.include?(item)
       coupon_quantity = coupon[:num]
@@ -25,16 +25,16 @@ def apply_coupons(cart, coupons)
         item_with_coupon = item + " W/COUPON"
         cart[item_with_coupon] = {}
 
-        cart[item].each { |key, value|
+        cart[item].each do |key, value|
           cart[item_with_coupon][key] = value
-        }
+        end
 
         cart[item_with_coupon][:price] = coupon[:cost]
         cart[item_with_coupon][:count] = cart_quantity / coupon_quantity
         cart[item][:count] = cart_quantity % coupon_quantity
       end
     end
-  }
+  end
   cart
 end
 
