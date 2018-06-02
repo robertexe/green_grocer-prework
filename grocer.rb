@@ -14,8 +14,6 @@ def consolidate_cart(cart)
 end
 
 def apply_coupons(cart, coupons)
-  # code here	+  #coupon array of hashes
-  #cart is a hash
   coupons.each do |coupon|
     item = coupon[:item]
     if cart.include?(item)
@@ -40,7 +38,9 @@ end
 
 
 def apply_clearance(cart)
-  # code here
+  if att[:clearance]
+    att[:price] = (att[:price] * 0.8).round(2)
+  end
 end
 
 def checkout(cart, coupons)
